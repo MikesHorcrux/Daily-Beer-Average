@@ -14,7 +14,9 @@
 		271628892448DA530003FB61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271628882448DA530003FB61 /* Assets.xcassets */; };
 		2716288C2448DA530003FB61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2716288B2448DA530003FB61 /* Preview Assets.xcassets */; };
 		2716288F2448DA530003FB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2716288D2448DA530003FB61 /* LaunchScreen.storyboard */; };
-		27C44706244907A40032BAD0 /* Cards in Resources */ = {isa = PBXBuildFile; fileRef = 27C44705244907A40032BAD0 /* Cards */; };
+		27C4470A2449084C0032BAD0 /* OneBeerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C447092449084C0032BAD0 /* OneBeerButton.swift */; };
+		27C44713244909B60032BAD0 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C44712244909B60032BAD0 /* Card.swift */; };
+		27C4471524490D250032BAD0 /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C4471424490D250032BAD0 /* EntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +29,9 @@
 		2716288B2448DA530003FB61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2716288E2448DA530003FB61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		271628902448DA530003FB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27C44705244907A40032BAD0 /* Cards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cards; sourceTree = "<group>"; };
+		27C447092449084C0032BAD0 /* OneBeerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneBeerButton.swift; sourceTree = "<group>"; };
+		27C44712244909B60032BAD0 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		27C4471424490D250032BAD0 /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +67,10 @@
 				2716287F2448DA510003FB61 /* AppDelegate.swift */,
 				271628812448DA510003FB61 /* SceneDelegate.swift */,
 				271628862448DA510003FB61 /* ContentView.swift */,
-				27C44705244907A40032BAD0 /* Cards */,
+				27C4471424490D250032BAD0 /* EntryView.swift */,
+				27C4470F244908D90032BAD0 /* Cards */,
+				27C44708244908270032BAD0 /* Lists */,
+				27C44707244907E70032BAD0 /* Buttons */,
 				271628882448DA530003FB61 /* Assets.xcassets */,
 				2716288D2448DA530003FB61 /* LaunchScreen.storyboard */,
 				271628902448DA530003FB61 /* Info.plist */,
@@ -79,6 +86,29 @@
 				2716288B2448DA530003FB61 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		27C44707244907E70032BAD0 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				27C447092449084C0032BAD0 /* OneBeerButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		27C44708244908270032BAD0 /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lists;
+			sourceTree = "<group>";
+		};
+		27C4470F244908D90032BAD0 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				27C44712244909B60032BAD0 /* Card.swift */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +171,6 @@
 			files = (
 				2716288F2448DA530003FB61 /* LaunchScreen.storyboard in Resources */,
 				2716288C2448DA530003FB61 /* Preview Assets.xcassets in Resources */,
-				27C44706244907A40032BAD0 /* Cards in Resources */,
 				271628892448DA530003FB61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,10 +182,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C4470A2449084C0032BAD0 /* OneBeerButton.swift in Sources */,
 				271628852448DA510003FB61 /* Daily_Beer_Average.xcdatamodeld in Sources */,
 				271628802448DA510003FB61 /* AppDelegate.swift in Sources */,
 				271628872448DA510003FB61 /* ContentView.swift in Sources */,
+				27C4471524490D250032BAD0 /* EntryView.swift in Sources */,
 				271628822448DA510003FB61 /* SceneDelegate.swift in Sources */,
+				27C44713244909B60032BAD0 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
