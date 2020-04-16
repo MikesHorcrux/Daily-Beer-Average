@@ -10,7 +10,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, World!")
+        NavigationView{
+            List {
+                Text("Beer")
+                Text("Beer")
+                Text("Beer")
+                Text("Beer")
+                Text("Beer")
+                Text("Beer")
+                Text("Beer")
+            }
+        .navigationBarTitle("Daily Beer Average")
+            .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+                Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
+            } )
+        }
     }
 }
 
