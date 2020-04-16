@@ -14,6 +14,7 @@
 		271628892448DA530003FB61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271628882448DA530003FB61 /* Assets.xcassets */; };
 		2716288C2448DA530003FB61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2716288B2448DA530003FB61 /* Preview Assets.xcassets */; };
 		2716288F2448DA530003FB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2716288D2448DA530003FB61 /* LaunchScreen.storyboard */; };
+		27C44706244907A40032BAD0 /* Cards in Resources */ = {isa = PBXBuildFile; fileRef = 27C44705244907A40032BAD0 /* Cards */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		2716288B2448DA530003FB61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2716288E2448DA530003FB61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		271628902448DA530003FB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27C44705244907A40032BAD0 /* Cards */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Cards; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				2716287F2448DA510003FB61 /* AppDelegate.swift */,
 				271628812448DA510003FB61 /* SceneDelegate.swift */,
 				271628862448DA510003FB61 /* ContentView.swift */,
+				27C44705244907A40032BAD0 /* Cards */,
 				271628882448DA530003FB61 /* Assets.xcassets */,
 				2716288D2448DA530003FB61 /* LaunchScreen.storyboard */,
 				271628902448DA530003FB61 /* Info.plist */,
@@ -138,6 +141,7 @@
 			files = (
 				2716288F2448DA530003FB61 /* LaunchScreen.storyboard in Resources */,
 				2716288C2448DA530003FB61 /* Preview Assets.xcassets in Resources */,
+				27C44706244907A40032BAD0 /* Cards in Resources */,
 				271628892448DA530003FB61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
