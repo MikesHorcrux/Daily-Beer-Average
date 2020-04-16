@@ -9,22 +9,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showingHistory = false
+
     var body: some View {
         NavigationView{
-            List {
-                Text("Beer")
-                Text("Beer")
-                Text("Beer")
-                Text("Beer")
-                Text("Beer")
-                Text("Beer")
-                Text("Beer")
+            VStack(spacing: 150){
+                HStack{
+                    VStack{
+                        Text("Average Beer Drank: ")
+                            .font(.title)
+                    }
+                    Spacer()
+                    Text("\(5)")
+                        .fontWeight(.heavy)
+                        .font(.title)
+                        .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
+                }
+                .padding(.horizontal, 40)
+                
+                List {
+                    Text("Beer")
+                    Text("Beer")
+                    Text("Beer")
+                    Text("Beer")
+                    Text("Beer")
+                    Text("Beer")
+                    Text("Beer")
+                }
             }
-        .navigationBarTitle("Daily Beer Average")
-            .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
+            .padding(.vertical, 20)
+        .padding()
+            .navigationBarTitle("Daily Beer Average", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {self.showingHistory.toggle()}) {
                 Image("beerIcon")
                 .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
-            } )
+            } ).sheet(isPresented: $showingHistory) {
+                Text("Hi Mike")
+            }
         }
     }
 }
