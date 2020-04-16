@@ -22,7 +22,8 @@ struct ContentView: View {
             }
         .navigationBarTitle("Daily Beer Average")
             .navigationBarItems(trailing: Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/) {
-                Text(/*@START_MENU_TOKEN@*/"Button"/*@END_MENU_TOKEN@*/)
+                Image("beerIcon")
+                .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
             } )
         }
     }
