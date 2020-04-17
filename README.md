@@ -1,5 +1,5 @@
 # Daily-Beer-Average
-<img src="" align="right" width="35%"></img>
+<img src="https://github.com/justSomeBeardedDev/Daily-Beer-Average/blob/master/Screen%20Shot%202020-04-17%20at%204.58.16%20PM.png" align="right" width="35%"></img>
 Daily Beer Average is a fun simple app to track your Daily beer drinking while your in quarantine!
 ## Using/Installing
 To install Daily Beer Average, clone this repository and open the Xcode project using Xcode. Change the bundle identifier, then Build and Run the app to your device.
