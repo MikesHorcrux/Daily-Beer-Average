@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
      @Environment(\.managedObjectContext) var moc
@@ -14,7 +15,7 @@ struct ContentView: View {
     @FetchRequest(entity: Beers.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) var fetchedBeers: FetchedResults<Beers>
     
     @State var showingHistory = false
-
+    
     var body: some View {
         NavigationView{
             VStack(spacing: 100){
@@ -22,9 +23,42 @@ struct ContentView: View {
                     VStack{
                         Text("Average Beer Drank: ")
                             .font(.title)
+                        HStack{
+                            if avgAmount() == 1{
+                                Image("beerIcon")
+                                    .foregroundColor(.accentColor)
+                            }
+                            else if avgAmount() == 2{
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                            }
+                            else if avgAmount() == 3{
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                            }
+                            else if avgAmount() == 4{
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                                Image("beerIcon")
+                                .foregroundColor(.accentColor)
+                            }
+                            else{
+                               Image(systemName: "ellipsis")
+                            }
+                        }
                     }
                     Spacer()
-                    Text("\(5)")
+                    Text("\(avgAmount())")
                         .fontWeight(.heavy)
                         .font(.title)
                         .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
@@ -47,7 +81,46 @@ struct ContentView: View {
             }
         }
     }
-    
+    func avgAmount() -> Int16 {
+        var argBeers : Int16 = 0
+        
+        // - average expression on the amount attribute.
+        // - Naming the expression result as 'argBeers'.
+        // - Assigning the expression result data type as an Int16.
+
+        let expression = NSExpressionDescription()
+        expression.expression =  NSExpression(forFunction: "average:", arguments:[NSExpression(forKeyPath: "drankBeers")])
+        expression.name = "argBeers";
+        expression.expressionResultType = NSAttributeType.integer16AttributeType
+        
+        // Step 2:
+        // - Create the fetch request for the PainLevel entity.
+        // - Indicate that the fetched properties are those that were
+        //   described in `expression`.
+        // - Indicate that the result type is a dictionary.
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beers")
+        fetchRequest.propertiesToFetch = [expression]
+        fetchRequest.resultType = NSFetchRequestResultType.dictionaryResultType
+        fetchRequest.predicate = predicateForDayFromDate(date: Date() as NSDate)
+
+        // Step 3:
+        // - Execute the fetch request which returns an array.
+        // - There will only be one result. Get the first array
+        //   element and assign to 'resultMap'.
+        // - The avg amount value is in the dictionary as
+        //   'Total'. This will be arg value.
+
+        do {
+            let results = try moc.fetch(fetchRequest)
+            let resultMap = results[0] as! [String:Int16]
+            argBeers = resultMap["argBeers"] ?? 0
+        } catch let error as NSError {
+            NSLog("Error when summing amounts: \(error.localizedDescription)")
+        }
+
+        return argBeers
+    }
     func predicateForDayFromDate(date: NSDate) -> NSPredicate {
         let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
         var components = calendar!.components([.year, .month, .day, .hour, .minute, .second], from: date as Date)
