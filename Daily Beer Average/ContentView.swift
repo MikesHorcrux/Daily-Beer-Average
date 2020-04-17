@@ -10,11 +10,14 @@ import SwiftUI
 
 struct ContentView: View {
      @Environment(\.managedObjectContext) var moc
+    
+    @FetchRequest(entity: Beers.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) var fetchedBeers: FetchedResults<Beers>
+    
     @State var showingHistory = false
 
     var body: some View {
         NavigationView{
-            VStack(spacing: 150){
+            VStack(spacing: 100){
                 HStack{
                     VStack{
                         Text("Average Beer Drank: ")
@@ -28,14 +31,9 @@ struct ContentView: View {
                 }
                 .padding(.horizontal, 40)
                 
-                List {
-                    Text("Beer")
-                    Text("Beer")
-                    Text("Beer")
-                    Text("Beer")
-                    Text("Beer")
-                    Text("Beer")
-                    Text("Beer")
+                List(_fetchedBeers.wrappedValue, id: \.self) { beer in
+                    Text(" You Drank \(beer.drankBeers) at \(beer.date)")
+                        .padding(.vertical)
                 }
             }
             .padding(.vertical, 20)
@@ -48,6 +46,21 @@ struct ContentView: View {
                 EntryView(showing: self.$showingHistory).environment(\.managedObjectContext, self.moc)
             }
         }
+    }
+    
+    func predicateForDayFromDate(date: NSDate) -> NSPredicate {
+        let calendar = NSCalendar(calendarIdentifier: NSCalendar.Identifier.gregorian)
+        var components = calendar!.components([.year, .month, .day, .hour, .minute, .second], from: date as Date)
+        components.hour = 00
+        components.minute = 00
+        components.second = 00
+        let startDate = calendar!.date(from: components)
+        components.hour = 23
+        components.minute = 59
+        components.second = 59
+        let endDate = calendar!.date(from: components)
+
+        return NSPredicate(format: "date >= %@ AND date =< %@", argumentArray: [startDate!, endDate!])
     }
 }
 
