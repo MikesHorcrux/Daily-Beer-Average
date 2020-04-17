@@ -22,7 +22,7 @@ struct ContentView: View {
             VStack(spacing: 100){
                 HStack{
                     VStack{
-                        Text("Average Beer Drank: ")
+                        Text("Average Beers Drank: ")
                             .font(.title)
                         HStack{
                             if avgAmount() == 1{
