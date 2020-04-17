@@ -12,9 +12,10 @@ import CoreData
 struct ContentView: View {
      @Environment(\.managedObjectContext) var moc
     
-    @FetchRequest(entity: Beers.entity(), sortDescriptors: [NSSortDescriptor(key: "date", ascending: false)]) var fetchedBeers: FetchedResults<Beers>
+    @FetchRequest(fetchRequest: Beers.getBeers()) var fetchedBeers: FetchedResults<Beers>
     
     @State var showingHistory = false
+    @ObservedObject var formatter = TimedateFormater()
     
     var body: some View {
         NavigationView{
@@ -66,7 +67,7 @@ struct ContentView: View {
                 .padding(.horizontal, 40)
                 
                 List(_fetchedBeers.wrappedValue, id: \.self) { beer in
-                    Text(" You Drank \(beer.drankBeers) at \(beer.date)")
+                    Text(" You Drank \(beer.drankBeers) Beers at \(self.formatter.timeFormatter.string(from: beer.date))")
                         .padding(.vertical)
                 }
             }
