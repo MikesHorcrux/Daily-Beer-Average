@@ -9,19 +9,31 @@
 import SwiftUI
 
 struct EntryView: View {
+     @Binding var showing: Bool
     var body: some View {
-        VStack{
+        VStack(spacing: 50){
+            VStack(alignment: .leading){
+                Text("How many Beers did you just Drink?")
+                    .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
+                    .fontWeight(.medium)
+                    .font(.title)
+                    .padding(.leading, -20)
+            }
             HStack{
-                Text("PlaceHolder")
-                Spacer()
-                Text("PlaceHolder")
+                OneBeerButton(showing: $showing)
+                    .padding(.trailing)
+                TwoBeerButon(showing: $showing)
+                    .padding(.leading)
+                
+                
+            }
+            HStack{
+               ThreeBeerButton(showing: $showing)
+                .padding(.trailing)
+                FourBeerButton(showing: $showing)
+                    .padding(.leading)
             }
             Spacer()
-            HStack{
-                Text("PlaceHolder")
-                Spacer()
-                Text("PlaceHolder")
-            }
         }
         .padding(20)
     }
@@ -29,6 +41,6 @@ struct EntryView: View {
 
 struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
-        EntryView()
+        EntryView(showing: .constant(true))
     }
 }
