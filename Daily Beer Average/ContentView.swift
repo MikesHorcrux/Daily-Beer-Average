@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
+     @Environment(\.managedObjectContext) var moc
     @State var showingHistory = false
 
     var body: some View {
@@ -44,7 +45,7 @@ struct ContentView: View {
                 Image("beerIcon")
                 .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
             } ).sheet(isPresented: $showingHistory) {
-                EntryView(showing: self.$showingHistory)
+                EntryView(showing: self.$showingHistory).environment(\.managedObjectContext, self.moc)
             }
         }
     }

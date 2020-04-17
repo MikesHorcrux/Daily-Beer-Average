@@ -12,3 +12,4 @@ class Beers: NSManagedObject {
     @NSManaged var date: Date
     @NSManaged var drankBeers: Int16
 }
+

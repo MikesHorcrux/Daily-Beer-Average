@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct EntryView: View {
+     @Environment(\.managedObjectContext) var moc
      @Binding var showing: Bool
     var body: some View {
         VStack(spacing: 50){

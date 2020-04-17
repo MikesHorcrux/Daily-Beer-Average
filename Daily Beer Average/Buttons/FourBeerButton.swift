@@ -9,9 +9,22 @@
 import SwiftUI
 
 struct FourBeerButton: View {
+     @Environment(\.managedObjectContext) var moc
      @Binding var showing: Bool
        var body: some View {
-           Button(action: { }) {
+           Button(action: {
+            let Beer = Beers(context: self.moc)
+            Beer.date = Date()
+            Beer.drankBeers = Int16(4)
+            do {
+                try self.moc.save()
+                print("added entry on \(Date())")
+            } catch {
+                print(error)
+            }
+            self.showing.toggle()
+            print("Added 4 beer")
+           }) {
                ZStack{
                    Card()
                    HStack{
