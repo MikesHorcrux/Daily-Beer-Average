@@ -18,7 +18,8 @@ struct EntryView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
                     .fontWeight(.medium)
                     .font(.title)
-                    .padding(.leading, -20)
+                    .padding()
+                    
             }
             HStack{
                 OneBeerButton(showing: $showing)
@@ -35,6 +36,15 @@ struct EntryView: View {
                     .padding(.leading)
             }
             Spacer()
+            Button(action: {self.showing.toggle()}) {
+                ZStack{
+                    Capsule()
+                        .frame(width: 80, height: 30)
+                        .foregroundColor(Color(#colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)))
+                    Text("Cancel")
+                        .foregroundColor(.white)
+                }
+            }
         }
         .padding(20)
     }
