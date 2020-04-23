@@ -15,7 +15,9 @@ class Beers: NSManagedObject {
 extension Beers {
     static func getBeers() -> NSFetchRequest<Beers> {
         let request = Beers.fetchRequest() as! NSFetchRequest<Beers>
+        let datePredicate = NSPredicate(format: "date > %@", Date() as NSDate)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        request.predicate = datePredicate
         return request
     }
     
