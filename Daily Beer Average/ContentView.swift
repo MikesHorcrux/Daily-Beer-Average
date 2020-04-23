@@ -19,53 +19,58 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            VStack(spacing: 100){
-                HStack{
-                    VStack{
+            VStack(alignment: .leading){
+                VStack{
+                    HStack{
                         Text("Average Beers Drank: ")
                             .font(.title)
-                        HStack{
-                            if avgAmount() == 1{
-                                Image("beerIcon")
-                                    .foregroundColor(.accentColor)
-                            }
-                            else if avgAmount() == 2{
-                                Image("beerIcon")
+                            .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
+                        Spacer()
+                        Text("\(avgAmount())")
+                            .fontWeight(.heavy)
+                            .font(.title)
+                            .foregroundColor(Color(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)))
+                    }
+                    HStack{
+                        if avgAmount() == 1{
+                            Image("beerIcon")
                                 .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                            }
-                            else if avgAmount() == 3{
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                            }
-                            else if avgAmount() == 4{
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                                Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                            }
-                            else{
-                               Image(systemName: "ellipsis")
-                            }
+                        }
+                        else if avgAmount() == 2{
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                        }
+                        else if avgAmount() == 3{
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                        }
+                        else if avgAmount() == 4{
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                            Image("beerIcon")
+                            .foregroundColor(.accentColor)
+                        }
+                        else{
+                           Image(systemName: "ellipsis")
                         }
                     }
-                    Spacer()
-                    Text("\(avgAmount())")
-                        .fontWeight(.heavy)
-                        .font(.title)
-                        .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
                 }
                 .padding(.horizontal, 40)
-                
+                .padding(.bottom, 100)
+                Text("Beer Log:")
+                    .font(.title)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
                 List(_fetchedBeers.wrappedValue, id: \.self) { beer in
                     Text(" You Drank \(beer.drankBeers) Beers at \(self.formatter.timeFormatter.string(from: beer.date))")
                         .padding(.vertical)

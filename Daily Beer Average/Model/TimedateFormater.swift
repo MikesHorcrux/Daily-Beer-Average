@@ -18,7 +18,7 @@ final class TimedateFormater: ObservableObject{
     }
     var timeFormatter: DateFormatter{
         let formatter = DateFormatter()
-        formatter.timeStyle = .long
+        formatter.timeStyle = .short
         return formatter
     }
 }
