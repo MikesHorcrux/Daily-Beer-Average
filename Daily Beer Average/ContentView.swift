@@ -31,50 +31,14 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundColor(Color(#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)))
                     }
-                    HStack{
-                        if avgAmount() == 1{
-                            Image("beerIcon")
-                                .foregroundColor(.accentColor)
-                        }
-                        else if avgAmount() == 2{
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                        }
-                        else if avgAmount() == 3{
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                        }
-                        else if avgAmount() == 4{
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                            Image("beerIcon")
-                            .foregroundColor(.accentColor)
-                        }
-                        else{
-                           Image(systemName: "ellipsis")
-                        }
-                    }
+                    horizontalBeerIconList(avg: Int(avgAmount()))
+                    
                 }
                 .padding(.horizontal, 40)
                 .padding(.bottom, 100)
-                Text("Beer Log:")
-                    .font(.title)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(#colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)))
-                List(_fetchedBeers.wrappedValue, id: \.self) { beer in
-                    Text(" You Drank \(beer.drankBeers) Beers at \(self.formatter.timeFormatter.string(from: beer.date))")
-                        .padding(.vertical)
-                }
+                
+                BeerLogList()
+                
             }
             .padding(.vertical, 20)
         .padding()
@@ -86,40 +50,23 @@ struct ContentView: View {
                 EntryView(showing: self.$showingHistory).environment(\.managedObjectContext, self.moc)
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     func avgAmount() -> Int16 {
         var argBeers : Int16 = 0
-        
-        // - average expression on the amount attribute.
-        // - Naming the expression result as 'argBeers'.
-        // - Assigning the expression result data type as an Int16.
-
         let expression = NSExpressionDescription()
         expression.expression =  NSExpression(forFunction: "average:", arguments:[NSExpression(forKeyPath: "drankBeers")])
         expression.name = "argBeers";
         expression.expressionResultType = NSAttributeType.integer16AttributeType
-        
-        // Step 2:
-        // - Create the fetch request for the PainLevel entity.
-        // - Indicate that the fetched properties are those that were
-        //   described in `expression`.
-        // - Indicate that the result type is a dictionary.
-
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Beers")
         fetchRequest.propertiesToFetch = [expression]
         fetchRequest.resultType = NSFetchRequestResultType.dictionaryResultType
         fetchRequest.predicate = predicateForDayFromDate(date: Date() as NSDate)
-
-        // Step 3:
-        // - Execute the fetch request which returns an array.
-        // - There will only be one result. Get the first array
-        //   element and assign to 'resultMap'.
-        // - The avg amount value is in the dictionary as
-        //   'Total'. This will be arg value.
-
         do {
             let results = try moc.fetch(fetchRequest)
-            let resultMap = results[0] as! [String:Int16]
+            guard let resultMap = results[0] as? [String:Int16] else {
+                return 0
+            }
             argBeers = resultMap["argBeers"] ?? 0
         } catch let error as NSError {
             NSLog("Error when summing amounts: \(error.localizedDescription)")
@@ -139,7 +86,7 @@ struct ContentView: View {
         components.second = 59
         let endDate = calendar!.date(from: components)
 
-        return NSPredicate(format: "date >= %@ AND date =< %@", argumentArray: [startDate!, endDate!])
+        return NSPredicate(format: "date >= %@ AND date =< %@", argumentArray: [startDate ?? Date(), endDate ?? Date()])
     }
 }
 

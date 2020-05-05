@@ -14,6 +14,8 @@
 		271628892448DA530003FB61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271628882448DA530003FB61 /* Assets.xcassets */; };
 		2716288C2448DA530003FB61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2716288B2448DA530003FB61 /* Preview Assets.xcassets */; };
 		2716288F2448DA530003FB61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2716288D2448DA530003FB61 /* LaunchScreen.storyboard */; };
+		271A1E6C2461B69400F91FBA /* BeerLogList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A1E6B2461B69400F91FBA /* BeerLogList.swift */; };
+		271A1E6E2461B86E00F91FBA /* horizontalBeerIconList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A1E6D2461B86E00F91FBA /* horizontalBeerIconList.swift */; };
 		2760E39B24495D7300994188 /* Beers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760E39A24495D7300994188 /* Beers.swift */; };
 		2760E39D24496BB600994188 /* TimedateFormater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2760E39C24496BB600994188 /* TimedateFormater.swift */; };
 		27A520872449144A005DDA02 /* ThreeBeerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A520862449144A005DDA02 /* ThreeBeerButton.swift */; };
@@ -34,6 +36,8 @@
 		2716288B2448DA530003FB61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2716288E2448DA530003FB61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		271628902448DA530003FB61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		271A1E6B2461B69400F91FBA /* BeerLogList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerLogList.swift; sourceTree = "<group>"; };
+		271A1E6D2461B86E00F91FBA /* horizontalBeerIconList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = horizontalBeerIconList.swift; sourceTree = "<group>"; };
 		2760E39A24495D7300994188 /* Beers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beers.swift; sourceTree = "<group>"; };
 		2760E39C24496BB600994188 /* TimedateFormater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimedateFormater.swift; sourceTree = "<group>"; };
 		27A520862449144A005DDA02 /* ThreeBeerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreeBeerButton.swift; sourceTree = "<group>"; };
@@ -122,6 +126,8 @@
 		27C44708244908270032BAD0 /* Lists */ = {
 			isa = PBXGroup;
 			children = (
+				271A1E6B2461B69400F91FBA /* BeerLogList.swift */,
+				271A1E6D2461B86E00F91FBA /* horizontalBeerIconList.swift */,
 			);
 			path = Lists;
 			sourceTree = "<group>";
@@ -205,9 +211,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				271A1E6C2461B69400F91FBA /* BeerLogList.swift in Sources */,
 				27A5208924491581005DDA02 /* TwoBeerButon.swift in Sources */,
 				27A5208B244916FA005DDA02 /* FourBeerButton.swift in Sources */,
 				27C4470A2449084C0032BAD0 /* OneBeerButton.swift in Sources */,
+				271A1E6E2461B86E00F91FBA /* horizontalBeerIconList.swift in Sources */,
 				271628852448DA510003FB61 /* Daily_Beer_Average.xcdatamodeld in Sources */,
 				27A520872449144A005DDA02 /* ThreeBeerButton.swift in Sources */,
 				271628802448DA510003FB61 /* AppDelegate.swift in Sources */,
@@ -365,7 +373,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JustbeardedDevelopment.www.Daily-Beer-Average";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -386,7 +394,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JustbeardedDevelopment.www.Daily-Beer-Average";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
